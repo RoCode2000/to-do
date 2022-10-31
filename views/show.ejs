@@ -1,0 +1,30 @@
+<% layout("layout/boilerplate")%>
+    <div class="container">
+        <div class="row">
+            <h1 class="text-center">
+                <%=toDo.toDo%>
+            </h1>
+            <div class="col-6">
+                <form action="/home/<%=toDo._id%>?_method=PUT" method="post">
+                    <div class="">
+                        <label for="toDoInput" class="form-label">To Do</label>
+                        <input type="text" class="form-control" id="toDoInput" value="<%=toDo.toDo%>" name="toDo">
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Completed?
+                        </label>
+                        <%if (toDo.completed===false) {%>
+                            <input class="form-check-input" type="checkbox" value="true" id="flexCheckDefault"
+                                name="completed">
+                            <%} else {%>
+                                <input class="form-check-input" type="checkbox" value="false" id="flexCheckDefault"
+                                    name="completed" checked>
+                                <%}%>
+                    </div>
+                    <button class="btn btn-info">Update To Do</button>
+                    <a href="/home" class="btn btn-success">Home</a>
+                </form>
+            </div>
+        </div>
+    </div>
