@@ -4,10 +4,10 @@
             <h1 class="text-center">
                 <%=toDo.toDo%>
             </h1>
-            <div class="col-6">
+            <div class="col-6 offset-3 card p-2">
                 <form action="/home/<%=toDo._id%>?_method=PUT" method="post">
-                    <div class="">
-                        <label for="toDoInput" class="form-label">To Do</label>
+                    <div class="text-center">
+                        <label for="toDoInput" class="form-label">Edit To Do</label>
                         <input type="text" class="form-control" id="toDoInput" value="<%=toDo.toDo%>" name="toDo">
                     </div>
                     <div class="form-check">
@@ -22,8 +22,10 @@
                                     name="completed" checked>
                                 <%}%>
                     </div>
-                    <button class="btn btn-info">Update To Do</button>
-                    <a href="/home" class="btn btn-success">Home</a>
+                    <div class="d-flex justify-content-center">
+                        <button class="btn btn-info mx-2">Update To Do</button>
+                        <a href="/home" class="btn btn-success mx-2">Home</a>
+                    </div>
                 </form>
             </div>
         </div>

@@ -25,10 +25,6 @@ app.use(methodOverride("_method"))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-app.get("/", (req, res) => {
-    res.send("Hello World")
-})
-
 // get all
 app.get("/home", async (req, res) => {
     const toDos = await ToDo.find({})
@@ -54,14 +50,13 @@ app.get("/home/:id", async (req, res) => {
 
 // update one
 app.put("/home/:id", async (req, res) => {
-    console.log(req.body)
     const { id } = req.params
     let toDoInput = req.body.toDo
     let completed = req.body.completed
     if (completed === undefined) {
         completed = false
     }
-    const toDo = await ToDo.findByIdAndUpdate(id, { toDo: toDoInput, completed: completed }, { runValidators: true })
+    const toDoUpdate = await ToDo.findByIdAndUpdate(id, { toDo: toDoInput, completed: completed }, { runValidators: true })
     res.redirect("/home")
 })
 
